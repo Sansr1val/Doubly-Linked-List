@@ -1,11 +1,11 @@
 
 public class Node {
-	
+	//Class fields
 	private int data;
 	private Node next;
 	private Node previous;
 	
-
+	//Constructors, non-parameterized and parameterized.
 	public Node() {
 		this.data = 0;
 		this.next = null;
@@ -17,7 +17,8 @@ public class Node {
 		this.next = null;
 		this.previous = null;
 	}
-
+	
+	//setters/getters
 	public int getData() {
 		return data;
 	}
