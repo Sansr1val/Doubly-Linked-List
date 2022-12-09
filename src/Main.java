@@ -15,6 +15,7 @@ public class Main {
 		 * available inputs.
 		 */
 		int command;
+		//It is contain in a loop so that it will show again and again until the user decides to exit the program.
 		while(true) {
 			try {
 				System.out.println("\n----------Main Menu----------");
@@ -57,6 +58,11 @@ public class Main {
 	}
 	
 	
+	/*
+	 * Asks the user to insert an integer.
+	 * The input values is validated, integers are only allowed.
+	 * If valid, the input is added into the List.
+	 */
 	public static void Append() throws IOException {
 		try {
 			System.out.print("Enter the number to Append: ");
@@ -69,12 +75,12 @@ public class Main {
 		}
 	}
 	
+	/*
+	 * Calls the MergeAllDuplicates() method of the list.
+	 */
 	public static void MergeAllDuplicates() {
 		System.out.println("Merging duplicates ...\n");
 		list.MergeAllDuplicates();
 		System.out.println("MergeAllDuplicates Operation Completed!");
 	}
-	
-	
-
 }
