@@ -1,9 +1,9 @@
 
 public class CircularDoublyLinkedList {
-	
+	//class fields
 	private Node head;
 	private Node tail;
-
+	//setters/getters
 	public Node getTail() {
 		return tail;
 	}
@@ -21,6 +21,13 @@ public class CircularDoublyLinkedList {
 	}
 	
 	
+	/*
+	 * Adds a node into the list
+	 * If the list is empty, the first node is both the 
+	 * head and the tail.
+	 * Else, the new node is added at the tail and becomes the 
+	 * new tail.
+	 */
 	public void Add(int data) {
 		Node node = new Node(data);
 		if(head == null) {
@@ -42,7 +49,11 @@ public class CircularDoublyLinkedList {
 	 * Deletes all duplicates except the first occurences.
 	 * Operation won't proceed if the list is null.
 	 * A prompt will show if the list had no duplicates.
-	 * 
+	 *A loop with the pointer currentNode acts as the key and then another loop
+	 *with the pointer traversingNode checks if it is a duplicate if currentNode.
+	 *If true, the Node of traversingNode is deleted.
+	 *A separate delete operation is used when the current traversingNode is the tail.
+	 *Any node in between is deleted as normal.
 	 */
 	public void MergeAllDuplicates() {
 		if(head == null) {
@@ -50,8 +61,10 @@ public class CircularDoublyLinkedList {
 		}else {
 			boolean hasDuplicate = false;
 			Node currentNode = head;
+			//first loop, stops when the next of the node is the head
 			while(currentNode.getNext() !=head) {
 				Node traversingNode = currentNode.getNext();
+				//second loop, stops when the traversing node is the head.
 				while(traversingNode!=head) {
 					if(traversingNode.getData() == currentNode.getData()){
 						
@@ -69,12 +82,19 @@ public class CircularDoublyLinkedList {
 				}
 				currentNode = currentNode.getNext();
 			}
+			/*
+			 * If the list is detected to contain no duplicates,
+			 * a prompt will show telling the user of the case.
+			 */
 			if(!hasDuplicate) {
 				System.out.println("The list has no duplicates!\n");
 			}
 		}
 	}
 	
+	/*
+	 * Displays the contents of the list from head to tail
+	 */
 	public String Display() {
 		if(head == null ) {
 			return "The list is empty!\n";
@@ -90,7 +110,9 @@ public class CircularDoublyLinkedList {
 		}
 		
 	}
-	
+	/*
+	 * Displays the contents of the list from tail to head.
+	 */
 	public String DisplayReverse() {
 		if(head == null ) {
 			return "The list is empty!\n";
