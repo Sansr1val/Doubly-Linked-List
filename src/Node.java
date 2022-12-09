@@ -3,7 +3,7 @@ public class Node {
 	
 	private int data;
 	private Node next;
-	Node previous;
+	private Node previous;
 	
 
 	public Node() {

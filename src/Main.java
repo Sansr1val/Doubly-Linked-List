@@ -1,14 +1,80 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-
-	public static void main(String[] args) {
-		DoublyLinkedList list = new DoublyLinkedList();
-		list.Add(new Node(1));
-		list.Add(new Node(2));
-		list.Add(new Node(3));
-		list.Add(new Node(4));
-		list.Add(new Node(5));
-		System.out.println(list.Size());
+	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	static CircularDoublyLinkedList list = new  CircularDoublyLinkedList();
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		/*
+		 * The main menu of the program.
+		 * Enter the command to utilize the functions of the Queue class
+		 * Only Integers are allowed as inputs.
+		 * The input value must not go out of bounds, it must be within the domain of the
+		 * available inputs.
+		 */
+		int command;
+		while(true) {
+			try {
+				System.out.println("\n----------Main Menu----------");
+				System.out.println("[1] Append");
+				System.out.println("[2] Display");
+				System.out.println("[3] Merge All Duplicates");
+				System.out.println("[4] Exit");
+				System.out.print("Enter Command: ");
+				command = Integer.parseInt(in.readLine());
+				if(command >5 || command<1) {
+					System.out.println("Input command is out of bounds. Try again.");
+				}else {
+					switch(command) {
+					case 1:
+						//Append method call
+						Append();
+						break;
+					case 2:
+						//Displays the List's contents
+						System.out.println(list.Display());
+						break;
+					case 3:
+						//MergeAllDuplicates Method call
+						MergeAllDuplicates();
+						break;
+					case 4:
+						//Exits the program
+						System.out.println("Thank you, see you again!");
+						System.exit(0);
+					}
+				}
+				
+			} catch (NumberFormatException e) {
+				System.out.println("Integer only! Try again.");
+			}
+		}
+		
+		
+		
 	}
+	
+	
+	public static void Append() throws IOException {
+		try {
+			System.out.print("Enter the number to Append: ");
+			int number = Integer.parseInt(in.readLine());
+			list.Add(number);
+			System.out.println("Appended: "+number);
+			
+		} catch (NumberFormatException e) {
+			System.out.println("Integer only! Try again.");
+		}
+	}
+	
+	public static void MergeAllDuplicates() {
+		System.out.println("Merging duplicates ...\n");
+		list.MergeAllDuplicates();
+		System.out.println("MergeAllDuplicates Operation Completed!");
+	}
+	
+	
 
 }
